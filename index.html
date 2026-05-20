@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"><meta name="version" content="4.4">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Cameracal Media Health & Recovery Utility V4.3</title>
+<link rel="stylesheet" href="styles.css?v=43CFREDESIGN">
+</head>
+<body>
+<div class="top-alert">V4.3 • CompactFlash redesign</div>
+
+<aside class="sidebar">
+  <div class="logo-box"><img src="assets/cameracal-logo.png" alt="Cameracal Services"></div>
+  <nav>
+    <a class="active">Dashboard</a>
+    <a>Analyse / Check</a>
+    <a>Recovery Preview</a>
+    <a>Report</a>
+    <a>Guidance</a>
+  </nav>
+  <div class="rule">
+    <strong>Important recovery rule</strong>
+    <p>Stop using the card immediately. Do not format it or save recovered files back to the same card.</p>
+  </div>
+  <div class="version">Cameracal Services<br>v4.4 Clean Layout</div>
+</aside>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">CAMERACAL MEDIA DIAGNOSTIC TOOL</p>
+      <h1>Professional card checks before the situation gets worse.</h1>
+      <p>Select a folder or files from a card copy. This web version checks visible files, flags likely corruption, creates a report and gives safe recovery guidance.</p>
+      <button onclick="document.getElementById('folderInput').click()">Select Card / Folder</button>
+      <button class="secondary" onclick="document.getElementById('fileInput').click()">Select Files</button>
+      <input id="folderInput" type="file" multiple webkitdirectory directory>
+      <input id="fileInput" type="file" multiple>
+    </div>
+    <div class="hero-cards">
+      <div class="card sd-card"><b>SDXC</b><span>128</span><em>GB</em><i></i></div>
+      <div class="card cfexpress-card"><b>CFexpress</b><span>256</span><em>GB</em><i></i></div>
+      <div class="cf-card hero-cf">
+        <div class="cf-label">CompactFlash</div>
+        <div class="cf-series">PRO</div>
+        <div class="cf-capacity">64<span>GB</span></div>
+        <div class="cf-pins"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <article><small>CARD STATUS</small><strong id="cardStatus">Not scanned</strong><span>Awaiting files</span></article>
+    <article><small>HEALTH SCORE</small><strong id="healthScore">—</strong><span>Visible file integrity</span></article>
+    <article><small>USABLE FILES</small><strong id="usableFiles">0</strong><span>Readable or previewable</span></article>
+    <article><small>ISSUES FLAGGED</small><strong id="issuesFlagged">0</strong><span>Requires attention</span></article>
+    <article><small>RECOVERY URGENCY</small><strong>SAFE</strong><span>No risk detected</span></article>
+  </section>
+
+  <section class="grid">
+    <article class="panel card-selector-panel">
+      <h2>Card type selector</h2>
+      <div class="tabs">
+        <button class="active" data-type="SD / SDXC">SD / SDXC</button>
+        <button data-type="CompactFlash / CF">CompactFlash / CF</button>
+        <button data-type="CFexpress">CFexpress</button>
+        <button data-type="microSD">microSD</button>
+        <button data-type="XQD">XQD</button>
+        <button data-type="CFast">CFast</button>
+      </div>
+
+      <div class="selected-area">
+        <div id="displayCard" class="card large-card sd-card"><b>SDXC</b><span>128</span><em>GB</em><i></i></div>
+        <div class="info-grid">
+          <div class="info-row"><span>Selected card type</span><strong id="selectedType">SD / SDXC</strong></div>
+          <div class="info-row"><span>Supported checks</span><strong>JPEG, RAW, video, file size, extension and preview checks</strong></div>
+          <div class="info-row"><span>RAW support</span><strong>CR2, CR3, NEF, ARW, RAF, RW2, ORF, DNG</strong></div>        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Integrity overview</h2>
+      <div class="big-score"><span id="overviewScore">—</span>%</div>
+      <p id="overviewText">No files analysed yet.</p>
+      <div id="integrityMap" class="map"></div>
+    </article>
+  </section>
+
+  <section class="grid">
+    <article class="panel">
+      <h2>Recovery readiness</h2>
+      <label>Incident type
+        <select>
+          <option>Accidental deletion</option>
+          <option>Formatted card</option>
+          <option>Corruption / unreadable files</option>
+          <option>Interrupted write</option>
+          <option>Card not recognised</option>
+        </select>
+      </label>
+      <label>Capture importance
+        <select>
+          <option>Standard shoot</option>
+          <option>Critical paid assignment</option>
+          <option>Wedding / once-in-a-lifetime event</option>
+        </select>
+      </label>
+      <div class="timeline"><strong>Recommended action timeline:</strong> Stop using the card → Do not format → Copy/clone media → Export report.</div>
+    </article>
+
+    <article class="panel">
+      <h2>Detected files / confidence</h2>
+      <div id="fileList"></div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <h2>Reporting options</h2>
+    <div class="reports">
+      <button id="htmlReport"><strong>Interactive Report</strong><span>HTML report with visual sections.</span><em>Recommended</em></button>
+      <button id="pdfReport"><strong>Professional PDF Report</strong><span>Client-facing report for printing.</span></button>
+      <button id="txtReport"><strong>Technical Diagnostic Log</strong><span>Plain text diagnostics.</span></button>
+    </div>
+  </section>
+</main>
+
+<script src="app.js?v=43CFREDESIGN"></script>
+</body>
+</html>
