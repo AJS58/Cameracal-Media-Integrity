@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Cameracal Card Health v4.8</title>
+<link rel="stylesheet" href="styles.css?v=48single">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo-card">
+      <img src="assets/cameracal-logo.png" alt="Cameracal Services">
+    </div>
+
+    <nav class="nav">
+      <button class="active" data-view="dashboard">Dashboard</button>
+      <button data-view="analyse">Analyse / Check</button>
+      <button data-view="recovery">Recovery Preview</button>
+      <button data-view="reports">Report</button>
+      <button data-view="guidance">Guidance</button>
+    </nav>
+
+    <div class="warning">
+      <strong>Important recovery rule</strong>
+      <p>Stop using the card immediately. Do not format it or save recovered files back to the same card.</p>
+    </div>
+
+    <div class="side-version">Cameracal Services<br>v4.8 Single Dashboard</div>
+  </aside>
+
+  <main class="main">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">CAMERACAL MEDIA DIAGNOSTIC TOOL</p>
+        <h1>Professional card checks before the situation gets worse.</h1>
+        <p>Select a folder or files from a card copy. This web version checks visible files, flags likely corruption, creates a report and gives safe recovery guidance.</p>
+        <div class="hero-actions">
+          <button onclick="document.getElementById('folderInput').click()">Select Card / Folder</button>
+          <button class="secondary" onclick="document.getElementById('fileInput').click()">Select Files</button>
+        </div>
+        <input id="folderInput" type="file" multiple webkitdirectory directory>
+        <input id="fileInput" type="file" multiple>
+      </div>
+      <div class="hero-cards">
+        <div class="mini-card sd-preview">SDXC</div>
+        <div class="mini-card cf-preview">CompactFlash</div>
+        <div class="mini-card express-preview">CFexpress</div>
+      </div>
+    </header>
+
+    <section class="stats">
+      <article><small>CARD STATUS</small><strong id="cardStatus">Not scanned</strong><span>Awaiting files</span></article>
+      <article><small>HEALTH SCORE</small><strong id="healthScore">—</strong><span>Visible file integrity</span></article>
+      <article><small>USABLE FILES</small><strong id="usableFiles">0</strong><span>Readable or previewable</span></article>
+      <article><small>ISSUES FLAGGED</small><strong id="issuesFlagged">0</strong><span>Requires attention</span></article>
+      <article><small>RECOVERY URGENCY</small><strong id="urgency">SAFE</strong><span>No risk detected</span></article>
+    </section>
+
+    <section id="dashboard" class="view active-view">
+      <div class="grid-main">
+        <article class="panel card-selector-panel">
+          <h2>Card type selector</h2>
+          <div class="tabs" id="cardTabs">
+            <button class="active" data-type="sd">SD / SDXC</button>
+            <button data-type="compactflash">CompactFlash / CF</button>
+            <button data-type="cfexpress">CFexpress</button>
+            <button data-type="microsd">microSD</button>
+            <button data-type="xqd">XQD</button>
+            <button data-type="cfast">CFast</button>
+          </div>
+
+          <div class="card-detail-layout">
+            <div id="cardGraphic" class="media-card sd-card">
+              <div class="brandline">SanDisk</div>
+              <div class="series">Extreme PRO</div>
+              <div class="format">SDXC</div>
+              <div class="speed">V90 • UHS-II</div>
+              <div class="capacity">64<span>GB</span></div>
+              <div class="contacts"></div>
+            </div>
+
+            <div class="card-details">
+              <div class="detail-row">
+                <span>Selected card type</span>
+                <strong id="selectedType">SD / SDXC</strong>
+              </div>
+              <div class="detail-row">
+                <span>Supported checks</span>
+                <strong>JPEG, RAW, video, file-size and preview checks</strong>
+              </div>
+              <div class="detail-row">
+                <span>RAW support</span>
+                <strong>CR2, CR3, NEF, ARW, RAF, RW2, ORF, DNG</strong>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel integrity-panel">
+          <h2>Integrity overview</h2>
+          <div class="score" id="overviewScore">—%</div>
+          <p id="overviewText">No files analysed yet.</p>
+          <div id="integrityMap" class="integrity-map"></div>
+          <div class="legend">
+            <span><i class="good"></i>Good</span>
+            <span><i class="warn"></i>Warnings</span>
+            <span><i class="error"></i>Errors</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="lower-grid">
+        <article class="panel">
+          <h2>Recovery readiness</h2>
+          <div class="form-grid">
+            <label>Incident type
+              <select id="incidentType">
+                <option>Accidental deletion</option>
+                <option>Formatted card</option>
+                <option>Corruption / unreadable files</option>
+                <option>Interrupted write</option>
+                <option>Card not recognised</option>
+              </select>
+            </label>
+            <label>Capture importance
+              <select id="captureImportance">
+                <option>Standard shoot</option>
+                <option>Critical paid assignment</option>
+                <option>Wedding / once-in-a-lifetime event</option>
+              </select>
+            </label>
+          </div>
+          <div class="timeline"><strong>Recommended action timeline:</strong> Stop using the card → do not format → copy/clone media → export report.</div>
+        </article>
+
+        <article class="panel">
+          <h2>Detected files / confidence</h2>
+          <div id="fileList" class="file-list"><p>No files selected.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="analyse" class="view panel">
+      <h2>Analyse / Check</h2>
+      <p>Use this section for browser-safe card/folder checks. True deleted-sector recovery requires a desktop app.</p>
+    </section>
+
+    <section id="recovery" class="view panel">
+      <h2>Recovery Preview</h2>
+      <p>Preview readable/recoverable visible files and export a recovery assessment report.</p>
+    </section>
+
+    <section id="reports" class="view panel">
+      <h2>Report</h2>
+      <div class="report-options">
+        <button id="htmlReport"><strong>Interactive Report</strong><span>HTML report with visual sections.</span></button>
+        <button id="pdfReport"><strong>Professional PDF Report</strong><span>Print or save as PDF.</span></button>
+        <button id="txtReport"><strong>Technical Diagnostic Log</strong><span>Plain text diagnostics.</span></button>
+      </div>
+    </section>
+
+    <section id="guidance" class="view panel">
+      <h2>Guidance</h2>
+      <div class="guidance-grid">
+        <div><strong>Privacy first</strong><p>Files are analysed locally in your browser. No images are uploaded.</p></div>
+        <div><strong>Safe recovery rule</strong><p>Do not save recovered files back to the same card.</p></div>
+        <div><strong>CompactFlash support</strong><p>Included for photographers still using older DSLR systems.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-brand">
+    <div class="app-icon">●</div>
+    <div>
+      <strong>Cameracal Card Health</strong>
+      <small>Professional memory card analysis and recovery guidance</small>
+    </div>
+  </div>
+  <div class="version">v4.8 Single Dashboard</div>
+  <div class="pro">PRO</div>
+  <div class="privacy">Privacy first&nbsp;&nbsp;•&nbsp;&nbsp;No data sent to any server</div>
+  <button id="exportReport">Export report</button>
+</footer>
+
+<script src="app.js?v=48single"></script>
+</body>
+</html>
