@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Cameracal Card Health v4.5</title>
+<link rel="stylesheet" href="styles.css?v=45commercial">
+</head>
+<body>
+<div class="app">
+  <main class="dashboard">
+    <section class="card-panel">
+      <div class="selector">
+        <h1>Card type selector</h1>
+        <div class="tabs">
+          <button data-type="sd" class="active">SD / SDXC</button>
+          <button data-type="compactflash">CompactFlash / CF</button>
+          <button data-type="cfexpress">CFexpress</button>
+          <button data-type="microsd">microSD</button>
+          <button data-type="xqd">XQD</button>
+          <button data-type="cfast">CFast</button>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <div id="cardGraphic" class="media sd">
+          <div class="brandline">SanDisk</div>
+          <div class="series">Extreme PRO</div>
+          <div class="format">SDXC</div>
+          <div class="speed">V90 • UHS-II</div>
+          <div class="capacity">64<span>GB</span></div>
+          <div class="contacts"></div>
+        </div>
+
+        <div class="details">
+          <div class="detail-row">
+            <span>Selected card type</span>
+            <strong id="selectedType">SD / SDXC</strong>
+          </div>
+          <div class="divider"></div>
+          <div class="detail-row">
+            <span>Supported checks</span>
+            <strong>JPEG, RAW, video, file size, extension and preview checks</strong>
+          </div>
+          <div class="divider"></div>
+          <div class="detail-row">
+            <span>RAW support</span>
+            <strong>CR2, CR3, NEF, ARW, RAF, RW2, ORF, DNG</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="integrity-panel">
+      <h1>Integrity overview</h1>
+      <div class="score">—%</div>
+      <p>No files analysed yet.</p>
+      <div id="map" class="map"></div>
+      <div class="legend">
+        <span><i class="good"></i>Good</span>
+        <span><i class="warn"></i>Warnings</span>
+        <span><i class="error"></i>Errors</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="app-icon">●</div>
+      <div>
+        <strong>Cameracal Card Health</strong>
+        <small>Professional memory card analysis and recovery guidance</small>
+      </div>
+    </div>
+    <div class="version">v4.5 Commercial UI</div>
+    <div class="pro">PRO</div>
+    <div class="privacy">Privacy first&nbsp;&nbsp;•&nbsp;&nbsp;No data sent to any server</div>
+    <button id="reportBtn">Export report</button>
+  </footer>
+</div>
+
+<input id="fileInput" type="file" multiple webkitdirectory directory>
+<script src="app.js?v=45commercial"></script>
+</body>
+</html>
